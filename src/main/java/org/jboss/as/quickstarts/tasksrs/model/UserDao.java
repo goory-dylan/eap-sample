@@ -1,6 +1,6 @@
 /*
  * JBoss, Home of Professional Open Source
- * Copyright 2015, Red Hat, Inc. and/or its affiliates, and individual
+ * Copyright 2014, Red Hat, Inc. and/or its affiliates, and individual
  * contributors by the @authors tag. See the copyright.txt in the
  * distribution for a full listing of individual contributors.
  *
@@ -14,18 +14,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.as.quickstarts.helloworld;
+package org.jboss.as.quickstarts.tasksrs.model;
+
+import java.util.List;
+
+import javax.ejb.Local;
 
 /**
- * A simple CDI service which is able to say hello to someone
+ * Basic operations for manipulation with users
  *
- * @author Pete Muir
+ * @author Lukas Fryc
  *
  */
-public class HelloService {
+@Local
+public interface UserDao {
 
-    String createHelloMessage(String name) {
-        return "Hello " + name + "!";
-    }
+    public User getForUsername(String username);
 
+    public void createUser(User user);
+
+    public List<User> getAll();
 }
